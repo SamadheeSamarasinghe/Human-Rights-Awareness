@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <script type="text/javascript">
+   function validate()
+   {
+     var name=document.form.name.value;
+     var Email=document.form.email.value;
+     var agreement=document.form.agree.checked;
+     var Mobile=document.form.mobile.value;
+     var Text=document.form.description.value;
+     var submit1=document.form.submit.onsubmit;
+     
+     if(name=="" || Email=="" || Mobile=="" || Text=="")
+       {
+        alert("Please enter all details to continue");
+        return false; 
+       }
+     if(!agreement)
+      {
+        alert("Please agree to the terms and conditions");
+        return false;
+      }
+      if(!Email.includes('.','@'))
+      {
+        alert("Invalid Email");
+        return false;
+      }
+      if(Mobile.length!=10 || isNaN(Mobile))
+      {
+        alert("Invalid Mobile Number");
+        return false;
+      }
+      if(submit1==onsubmit)
+      {
+        alert("Form submitted!");
+        return true;
+      }
+   }
+ </script>
+
+ <style>
+
+ h2{
+    padding-top: 25px;
+    color: #000080;
+    padding-left: 25px;
+ }
+
+
+.container {
+  max-width: 1200px;
+  margin-left: 450px;
+  margin-right: 450px;
+  padding-left: 60px;
+  padding-right: 85px;
+  background-color: #CCEEFF;
+  position: absolute;
+  margin-top: -15px;
+  margin-bottom: -15px;
+}
+
+input[type=text], input[type=text]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: white;
+}
+
+#txtarea{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: white;
+}
+
+.btn1 {
+  background-color: #00CC00;
+  color: white;
+  padding: 16px 45px;
+  border: none;
+  cursor: pointer;
+  margin-left: -2px;
+  margin-right: 10px;
+  margin-bottom:10px;
+}
+
+.btn2 {
+  background-color: #FF0000;
+  color: white;
+  padding: 16px 45px;
+  border: none;
+  margin-left: 15px;
+  cursor: pointer;
+  margin-bottom:10px;
+}
+
+</style>
+
+</head>
+<body>
+<form action="../index.php/insert.php" method="POST" name="form" class="container" onsubmit="return validate()">
+<h2 align="center">Please fill the form below for Support and Advice</h2></legend> <br><br>
+Name <input type="text" name="name"><br><br>
+
+E-mail <input type="text" name="email"><br><br>
+
+Phone Number <input type="text" name="mobile"> <br><br>
+
+Mention a brief description regarding your issue:<br> <textarea rows=5 cols=60 id="txtarea" name="description"></textarea><br><br>
+
+<input type="checkbox" name="agree"> I agree to the <a href="terms.html">terms and conditions.</a><br><br>   
+
+<input type="submit" class="btn1" value="Submit" name="submit" onClick="validate();">
+
+<input type="reset" class="btn2" value="Cancel">
+
+<h4 align="center">Once you submit the form, we will be arranging a meeting to discuss your issue and provide you with our best support and advice. You will receive an email with all the details of the meeting.</h4>
+
+</form>
+
+
+<br><br>
+<form method="POST" action="../index.php/retrievedb.php">
+
+ Click here to retrieve entered details <input type="submit" name="retrieve" value="retrieve">
+
+</form>
+
+
+
+
+</body>
+</html>
